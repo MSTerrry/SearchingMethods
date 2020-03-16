@@ -1,0 +1,26 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="AlmostGoogle" SizeToContent="Height" MinHeight="100" Width="300"  PreviewKeyDown="Button_PreviewKeyDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>        
+        <StackPanel Grid.Row="0" Orientation="Horizontal" MinWidth="200">
+            <TextBox Text="{Binding InputText}" Height="20" Width="200" Margin="10 0 0 0" />
+            <Button x:Name="Find" Content="Find" Height="20" Margin="10 0 0 0" Command="{Binding Find}"/>
+            <Button Content="Clear" Height="20" Margin="5 0 5 0" Command="{Binding Clear}"/>
+        </StackPanel>      
+        <DataGrid Grid.Row="2" ItemsSource="{Binding SearchCollection}" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
